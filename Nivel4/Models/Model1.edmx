@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="LEVEL1">
           <Key>
             <PropertyRef Name="ID_LEVEL1" />
@@ -35,16 +35,9 @@
           <Property Name="ID_LEVEL4" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_LEVEL3" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NAME_LEVEL4" Type="varchar2" MaxLength="250" />
-          <Property Name="VINCULOPOWERBI" Type="nclob" />
+          <Property Name="VINCULOPOWERBI" Type="varchar2" MaxLength="4000" />
           <Property Name="TAG" Type="varchar2" MaxLength="250" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'ADMIN.MENU006' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="MENU006">
-          <Property Name="ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="NAME" Type="varchar2" MaxLength="250" />
-          <Property Name="PARENTID" Type="number" Precision="38" Scale="0" />
-        </EntityType>-->
         <Association Name="FK_LEVEL_2">
           <End Role="LEVEL1" Type="Self.LEVEL1" Multiplicity="1" />
           <End Role="LEVEL2" Type="Self.LEVEL2" Multiplicity="*" />
@@ -99,8 +92,7 @@ advertencia 6013: La tabla o vista 'ADMIN.MENU006' no tiene definida una clave p
             <End Role="LEVEL4" EntitySet="LEVEL4" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

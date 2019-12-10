@@ -51,6 +51,9 @@ namespace Nivel4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
         {
+
+
+            //lEVEL4.ID_LEVEL4 = db.LEVEL4.Max(c => c.ID_LEVEL4) + 1;
             lEVEL4.ID_LEVEL4 = db.LEVEL4.Count() + 1;
             LEVEL3 level3aux = db.LEVEL3.Find(lEVEL4.ID_LEVEL3);
             lEVEL4.TAG = level3aux.LEVEL2.LEVEL1.NAME_LEVEL1 + " " +
