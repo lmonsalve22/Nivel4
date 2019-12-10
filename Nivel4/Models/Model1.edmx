@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LEVEL1">
+          <Key>
+            <PropertyRef Name="ID_LEVEL1" />
+          </Key>
+          <Property Name="ID_LEVEL1" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL1" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LEVEL2">
+          <Key>
+            <PropertyRef Name="ID_LEVEL2" />
+          </Key>
+          <Property Name="ID_LEVEL2" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_LEVEL1" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL2" Type="varchar2" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="LEVEL3">
+          <Key>
+            <PropertyRef Name="ID_LEVEL3" />
+          </Key>
+          <Property Name="ID_LEVEL3" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_LEVEL2" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL3" Type="varchar2" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="LEVEL4">
+          <Key>
+            <PropertyRef Name="ID_LEVEL4" />
+          </Key>
+          <Property Name="ID_LEVEL4" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_LEVEL3" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL4" Type="varchar2" MaxLength="250" />
+          <Property Name="VINCULOPOWERBI" Type="nclob" />
+          <Property Name="TAG" Type="varchar2" MaxLength="250" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ADMIN.MENU006' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="MENU006">
+          <Property Name="ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="NAME" Type="varchar2" MaxLength="250" />
+          <Property Name="PARENTID" Type="number" Precision="38" Scale="0" />
+        </EntityType>-->
+        <Association Name="FK_LEVEL_2">
+          <End Role="LEVEL1" Type="Self.LEVEL1" Multiplicity="1" />
+          <End Role="LEVEL2" Type="Self.LEVEL2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEVEL1">
+              <PropertyRef Name="ID_LEVEL1" />
+            </Principal>
+            <Dependent Role="LEVEL2">
+              <PropertyRef Name="ID_LEVEL1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LEVEL_3">
+          <End Role="LEVEL2" Type="Self.LEVEL2" Multiplicity="1" />
+          <End Role="LEVEL3" Type="Self.LEVEL3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEVEL2">
+              <PropertyRef Name="ID_LEVEL2" />
+            </Principal>
+            <Dependent Role="LEVEL3">
+              <PropertyRef Name="ID_LEVEL2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LEVELS">
+          <End Role="LEVEL3" Type="Self.LEVEL3" Multiplicity="1" />
+          <End Role="LEVEL4" Type="Self.LEVEL4" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEVEL3">
+              <PropertyRef Name="ID_LEVEL3" />
+            </Principal>
+            <Dependent Role="LEVEL4">
+              <PropertyRef Name="ID_LEVEL3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="LEVEL1" EntityType="Self.LEVEL1" Schema="ADMIN" store:Type="Tables" />
+          <EntitySet Name="LEVEL2" EntityType="Self.LEVEL2" Schema="ADMIN" store:Type="Tables" />
+          <EntitySet Name="LEVEL3" EntityType="Self.LEVEL3" Schema="ADMIN" store:Type="Tables" />
+          <EntitySet Name="LEVEL4" EntityType="Self.LEVEL4" Schema="ADMIN" store:Type="Tables" />
+          <AssociationSet Name="FK_LEVEL_2" Association="Self.FK_LEVEL_2">
+            <End Role="LEVEL1" EntitySet="LEVEL1" />
+            <End Role="LEVEL2" EntitySet="LEVEL2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LEVEL_3" Association="Self.FK_LEVEL_3">
+            <End Role="LEVEL2" EntitySet="LEVEL2" />
+            <End Role="LEVEL3" EntitySet="LEVEL3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LEVELS" Association="Self.FK_LEVELS">
+            <End Role="LEVEL3" EntitySet="LEVEL3" />
+            <End Role="LEVEL4" EntitySet="LEVEL4" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LEVEL1">
+          <Key>
+            <PropertyRef Name="ID_LEVEL1" />
+          </Key>
+          <Property Name="ID_LEVEL1" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LEVEL2" Relationship="Self.FK_LEVEL_2" FromRole="LEVEL1" ToRole="LEVEL2" />
+        </EntityType>
+        <EntityType Name="LEVEL2">
+          <Key>
+            <PropertyRef Name="ID_LEVEL2" />
+          </Key>
+          <Property Name="ID_LEVEL2" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_LEVEL1" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LEVEL1" Relationship="Self.FK_LEVEL_2" FromRole="LEVEL2" ToRole="LEVEL1" />
+          <NavigationProperty Name="LEVEL3" Relationship="Self.FK_LEVEL_3" FromRole="LEVEL2" ToRole="LEVEL3" />
+        </EntityType>
+        <EntityType Name="LEVEL3">
+          <Key>
+            <PropertyRef Name="ID_LEVEL3" />
+          </Key>
+          <Property Name="ID_LEVEL3" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_LEVEL2" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LEVEL2" Relationship="Self.FK_LEVEL_3" FromRole="LEVEL3" ToRole="LEVEL2" />
+          <NavigationProperty Name="LEVEL4" Relationship="Self.FK_LEVELS" FromRole="LEVEL3" ToRole="LEVEL4" />
+        </EntityType>
+        <EntityType Name="LEVEL4">
+          <Key>
+            <PropertyRef Name="ID_LEVEL4" />
+          </Key>
+          <Property Name="ID_LEVEL4" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ID_LEVEL3" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME_LEVEL4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="VINCULOPOWERBI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TAG" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LEVEL3" Relationship="Self.FK_LEVELS" FromRole="LEVEL4" ToRole="LEVEL3" />
+        </EntityType>
+        <Association Name="FK_LEVEL_2">
+          <End Role="LEVEL1" Type="Self.LEVEL1" Multiplicity="1" />
+          <End Role="LEVEL2" Type="Self.LEVEL2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEVEL1">
+              <PropertyRef Name="ID_LEVEL1" />
+            </Principal>
+            <Dependent Role="LEVEL2">
+              <PropertyRef Name="ID_LEVEL1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LEVEL_3">
+          <End Role="LEVEL2" Type="Self.LEVEL2" Multiplicity="1" />
+          <End Role="LEVEL3" Type="Self.LEVEL3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEVEL2">
+              <PropertyRef Name="ID_LEVEL2" />
+            </Principal>
+            <Dependent Role="LEVEL3">
+              <PropertyRef Name="ID_LEVEL2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LEVELS">
+          <End Role="LEVEL3" Type="Self.LEVEL3" Multiplicity="1" />
+          <End Role="LEVEL4" Type="Self.LEVEL4" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LEVEL3">
+              <PropertyRef Name="ID_LEVEL3" />
+            </Principal>
+            <Dependent Role="LEVEL4">
+              <PropertyRef Name="ID_LEVEL3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LEVEL1" EntityType="Self.LEVEL1" />
+          <EntitySet Name="LEVEL2" EntityType="Self.LEVEL2" />
+          <EntitySet Name="LEVEL3" EntityType="Self.LEVEL3" />
+          <EntitySet Name="LEVEL4" EntityType="Self.LEVEL4" />
+          <AssociationSet Name="FK_LEVEL_2" Association="Self.FK_LEVEL_2">
+            <End Role="LEVEL1" EntitySet="LEVEL1" />
+            <End Role="LEVEL2" EntitySet="LEVEL2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LEVEL_3" Association="Self.FK_LEVEL_3">
+            <End Role="LEVEL2" EntitySet="LEVEL2" />
+            <End Role="LEVEL3" EntitySet="LEVEL3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LEVELS" Association="Self.FK_LEVELS">
+            <End Role="LEVEL3" EntitySet="LEVEL3" />
+            <End Role="LEVEL4" EntitySet="LEVEL4" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="LEVEL1">
+            <EntityTypeMapping TypeName="Model.LEVEL1">
+              <MappingFragment StoreEntitySet="LEVEL1">
+                <ScalarProperty Name="ID_LEVEL1" ColumnName="ID_LEVEL1" />
+                <ScalarProperty Name="NAME_LEVEL1" ColumnName="NAME_LEVEL1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEVEL2">
+            <EntityTypeMapping TypeName="Model.LEVEL2">
+              <MappingFragment StoreEntitySet="LEVEL2">
+                <ScalarProperty Name="ID_LEVEL2" ColumnName="ID_LEVEL2" />
+                <ScalarProperty Name="ID_LEVEL1" ColumnName="ID_LEVEL1" />
+                <ScalarProperty Name="NAME_LEVEL2" ColumnName="NAME_LEVEL2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEVEL3">
+            <EntityTypeMapping TypeName="Model.LEVEL3">
+              <MappingFragment StoreEntitySet="LEVEL3">
+                <ScalarProperty Name="ID_LEVEL3" ColumnName="ID_LEVEL3" />
+                <ScalarProperty Name="ID_LEVEL2" ColumnName="ID_LEVEL2" />
+                <ScalarProperty Name="NAME_LEVEL3" ColumnName="NAME_LEVEL3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LEVEL4">
+            <EntityTypeMapping TypeName="Model.LEVEL4">
+              <MappingFragment StoreEntitySet="LEVEL4">
+                <ScalarProperty Name="ID_LEVEL4" ColumnName="ID_LEVEL4" />
+                <ScalarProperty Name="ID_LEVEL3" ColumnName="ID_LEVEL3" />
+                <ScalarProperty Name="NAME_LEVEL4" ColumnName="NAME_LEVEL4" />
+                <ScalarProperty Name="VINCULOPOWERBI" ColumnName="VINCULOPOWERBI" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
