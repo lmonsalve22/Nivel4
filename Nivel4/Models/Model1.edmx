@@ -38,6 +38,14 @@
           <Property Name="VINCULOPOWERBI" Type="varchar2" MaxLength="4000" />
           <Property Name="TAG" Type="varchar2" MaxLength="250" />
         </EntityType>
+        <EntityType Name="MENU006">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="250" />
+          <Property Name="PARENTID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
         <Association Name="FK_LEVEL_2">
           <End Role="LEVEL1" Type="Self.LEVEL1" Multiplicity="1" />
           <End Role="LEVEL2" Type="Self.LEVEL2" Multiplicity="*" />
@@ -79,6 +87,7 @@
           <EntitySet Name="LEVEL2" EntityType="Self.LEVEL2" Schema="ADMIN" store:Type="Tables" />
           <EntitySet Name="LEVEL3" EntityType="Self.LEVEL3" Schema="ADMIN" store:Type="Tables" />
           <EntitySet Name="LEVEL4" EntityType="Self.LEVEL4" Schema="ADMIN" store:Type="Tables" />
+          <EntitySet Name="MENU006" EntityType="Self.MENU006" Schema="ADMIN" store:Type="Tables" />
           <AssociationSet Name="FK_LEVEL_2" Association="Self.FK_LEVEL_2">
             <End Role="LEVEL1" EntitySet="LEVEL1" />
             <End Role="LEVEL2" EntitySet="LEVEL2" />
@@ -188,7 +197,16 @@
             <End Role="LEVEL3" EntitySet="LEVEL3" />
             <End Role="LEVEL4" EntitySet="LEVEL4" />
           </AssociationSet>
+          <EntitySet Name="MENU006" EntityType="Model.MENU006" />
         </EntityContainer>
+        <EntityType Name="MENU006">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PARENTID" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -229,6 +247,15 @@
                 <ScalarProperty Name="NAME_LEVEL4" ColumnName="NAME_LEVEL4" />
                 <ScalarProperty Name="VINCULOPOWERBI" ColumnName="VINCULOPOWERBI" />
                 <ScalarProperty Name="TAG" ColumnName="TAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENU006">
+            <EntityTypeMapping TypeName="Model.MENU006">
+              <MappingFragment StoreEntitySet="MENU006">
+                <ScalarProperty Name="PARENTID" ColumnName="PARENTID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Nivel4.Models.LEVEL4>
+@{
+    ViewBag.Title = "Level4PorBorrar";
+}
+
+
+<h2>Si borra este nivel @ViewBag.Level3.NAME_LEVEL3 se borraran los siguientes niveles 3</h2>
+<h3>¿Desea borrarlo de todas maneras?</h3>
+
+<p>
+    @Html.ActionLink("Borrar todo", "DeleteAll", new {id = ViewBag.Level3.ID_LEVEL3})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME_LEVEL4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VINCULOPOWERBI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LEVEL3.NAME_LEVEL3)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAME_LEVEL4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VINCULOPOWERBI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TAG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LEVEL3.NAME_LEVEL3)
+            </td>
+
+        </tr>
+    }
+
+</table>
+

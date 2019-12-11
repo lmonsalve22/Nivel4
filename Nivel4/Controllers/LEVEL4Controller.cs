@@ -52,8 +52,6 @@ namespace Nivel4.Controllers
         //public async Task<ActionResult> Create([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
         public ActionResult Create([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
         {
-
-
             //lEVEL4.ID_LEVEL4 = db.LEVEL4.Max(c => c.ID_LEVEL4) + 1;
             lEVEL4.ID_LEVEL4 = db.LEVEL4.Count() + 1;
             LEVEL3 level3aux = db.LEVEL3.Find(lEVEL4.ID_LEVEL3);
@@ -94,12 +92,20 @@ namespace Nivel4.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
+        //public async Task<ActionResult> Edit([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
+        public ActionResult Edit([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
         {
             if (ModelState.IsValid)
             {
+                LEVEL3 level3aux = db.LEVEL3.Find(lEVEL4.ID_LEVEL3);
+                lEVEL4.TAG = level3aux.LEVEL2.LEVEL1.NAME_LEVEL1 + " " +
+                             level3aux.LEVEL2.NAME_LEVEL2 + " " +
+                             level3aux.NAME_LEVEL3 + " " +
+                             lEVEL4.NAME_LEVEL4;
                 db.Entry(lEVEL4).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
+                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+                
                 return RedirectToAction("Index");
             }
             ViewBag.ID_LEVEL3 = new SelectList(db.LEVEL3, "ID_LEVEL3", "NAME_LEVEL3", lEVEL4.ID_LEVEL3);
@@ -124,11 +130,13 @@ namespace Nivel4.Controllers
         // POST: LEVEL4/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(decimal id)
+        //public async Task<ActionResult> DeleteConfirmed(decimal id)
+        public ActionResult DeleteConfirmed(decimal id)
         {
-            LEVEL4 lEVEL4 = await db.LEVEL4.FindAsync(id);
+            LEVEL4 lEVEL4 = db.LEVEL4.Find(id);
             db.LEVEL4.Remove(lEVEL4);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
+            db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
             return RedirectToAction("Index");
         }
 

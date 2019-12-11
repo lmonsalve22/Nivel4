@@ -38,5 +38,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="MENU006">
+      <EntityTypeMapping TypeName="Model.MENU006">
+        <MappingFragment StoreEntitySet="MENU006">
+          <ScalarProperty Name="PARENTID" ColumnName="PARENTID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

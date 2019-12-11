@@ -92,5 +92,14 @@
       <End Role="LEVEL3" EntitySet="LEVEL3" />
       <End Role="LEVEL4" EntitySet="LEVEL4" />
     </AssociationSet>
+    <EntitySet Name="MENU006" EntityType="Model.MENU006" />
   </EntityContainer>
+  <EntityType Name="MENU006">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PARENTID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
 </Schema>

@@ -29,5 +29,6 @@ namespace Nivel4.Models
         public DbSet<LEVEL2> LEVEL2 { get; set; }
         public DbSet<LEVEL3> LEVEL3 { get; set; }
         public DbSet<LEVEL4> LEVEL4 { get; set; }
+        public DbSet<MENU006> MENU006 { get; set; }
     }
 }
