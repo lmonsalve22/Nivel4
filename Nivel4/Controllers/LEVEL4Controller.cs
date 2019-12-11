@@ -49,8 +49,12 @@ namespace Nivel4.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
+        //public async Task<ActionResult> Create([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
+        public ActionResult Create([Bind(Include = "ID_LEVEL4,ID_LEVEL3,NAME_LEVEL4,VINCULOPOWERBI,TAG")] LEVEL4 lEVEL4)
         {
+
+
+            //lEVEL4.ID_LEVEL4 = db.LEVEL4.Max(c => c.ID_LEVEL4) + 1;
             lEVEL4.ID_LEVEL4 = db.LEVEL4.Count() + 1;
             LEVEL3 level3aux = db.LEVEL3.Find(lEVEL4.ID_LEVEL3);
             lEVEL4.TAG = level3aux.LEVEL2.LEVEL1.NAME_LEVEL1 + " " +
@@ -59,8 +63,9 @@ namespace Nivel4.Controllers
                          lEVEL4.NAME_LEVEL4;
             if (ModelState.IsValid)
             {
-                db.LEVEL4.Add(lEVEL4);
-                await db.SaveChangesAsync();
+                db.LEVEL4.Add(lEVEL4);                
+                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
