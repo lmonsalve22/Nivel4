@@ -11,7 +11,8 @@ namespace Nivel4
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui-{version}.js",
-                        "~/Scripts/jquery-3.3.1.slim.min.js"
+                        "~/Content/js/jquery.hislide.min.js",
+                        "~/Content/js/jquery-3.4.1.min.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -23,8 +24,8 @@ namespace Nivel4
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/umd/popper.js"
+                      "~/Scripts/umd/popper.js",
+                        "~/Scripts/bootstrap.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

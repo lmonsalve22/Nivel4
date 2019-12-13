@@ -93,6 +93,10 @@
       <End Role="LEVEL4" EntitySet="LEVEL4" />
     </AssociationSet>
     <EntitySet Name="MENU006" EntityType="Model.MENU006" />
+    <AssociationSet Name="MENU006_MENU006_FK" Association="Model.MENU006_MENU006_FK">
+      <End Role="MENU006" EntitySet="MENU006" />
+      <End Role="MENU0061" EntitySet="MENU006" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="MENU006">
     <Key>
@@ -101,5 +105,19 @@
     <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
     <Property Name="NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="PARENTID" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="MENU0061" Relationship="Model.MENU006_MENU006_FK" FromRole="MENU006" ToRole="MENU0061" />
+    <NavigationProperty Name="MENU0062" Relationship="Model.MENU006_MENU006_FK" FromRole="MENU0061" ToRole="MENU006" />
   </EntityType>
+  <Association Name="MENU006_MENU006_FK">
+    <End Type="Model.MENU006" Role="MENU006" Multiplicity="0..1" />
+    <End Type="Model.MENU006" Role="MENU0061" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU006">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MENU0061">
+        <PropertyRef Name="PARENTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

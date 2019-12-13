@@ -7,12 +7,24 @@
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/menus.css">
+    <script>
+        $(function () {
+            $("#menu").menu({
+                icons: { submenu: "ui-icon-triangle-1-e" }
+            });
+        });
+    </script>
     <style>
 
         /*Estilos ui menu*/
         .ui-menu {
             width: 356px;
-            height: 760px;
+            height: auto;
             background-color: white;
             margin-top: 0;
         }
@@ -138,9 +150,7 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script src="~/Content/js/navbar.js"></script>
+    
+    
 </body>
 </html>

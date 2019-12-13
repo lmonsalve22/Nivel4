@@ -1,5 +1,5 @@
 ﻿<div class="letra d-flex align-items-center justify-content-start pl-2" style="background-color:#48a7f7;width:356px; height: 50px; font-size:22px; color: white;">
-    Resultados de la búsqueda
+    Menu dinamico
 </div>
 <ul id="menu" class="btn-group-vertical" role="group">
     @*Model es la variable listamenu devuelta por el método de acción vistaparcial del menuController
@@ -7,45 +7,37 @@
     @foreach (var item in Model)
     {
         <li class="boton btn btn-block letra font-weight-bold" role="button">
-            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_1", "Busqueda", new { id = item.ID })">
-                @item.NAME
-            </a>
+                @item.NAME            
             @if (item.MENU0061.Count > 0)
             {
                 <ul>
                     @foreach (var sub in item.MENU0061)
                     {
-                        <li class="boton btn btn-block  letra">
-                            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_2", "Busqueda", new { id = sub.ID })">
-                                @sub.NAME
-                            </a>
-                            @if (sub.MENU0061.Count > 0)
-                            {
-                                <ul>
-                                    @foreach (var lvl in sub.MENU0061)
+                    <li class="boton btn btn-block  letra">
+                        @sub.NAME
+                        @if (sub.MENU0061.Count > 0)
+                        {
+                            <ul>
+                                @foreach (var lvl in sub.MENU0061)
+                                {
+                                <li class="boton btn btn-block letra">
+                                    @lvl.NAME
+                                    @if (lvl.MENU0061.Count > 0)
                                     {
-                                        <li class="boton btn btn-block letra">
-                                            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_3", "Busqueda", new { id = lvl.ID })">
-                                                @lvl.NAME
-                                            </a>
-                                            @if (lvl.MENU0061.Count > 0)
+                                        <ul>
+                                            @foreach (var cuarto in lvl.MENU0061)
                                             {
-                                                <ul>
-                                                    @foreach (var cuarto in lvl.MENU0061)
-                                                    {
-                                                        <li class="boton btn btn-block letra">
-                                                            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_4", "Busqueda", new { id = cuarto.ID })">
-                                                                @cuarto.NAME
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
+                                            <li class="boton btn btn-block letra">
+                                                @cuarto.NAME
+                                            </li>
                                             }
-                                        </li>
+                                        </ul>
                                     }
-                                </ul>
-                            }
-                        </li>
+                                </li>
+                                }
+                            </ul>
+                        }
+                    </li>
                     }
                 </ul>
             }
