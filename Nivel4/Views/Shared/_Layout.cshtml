@@ -9,25 +9,83 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-            </div>
+    @*MENU DINAMICO*@
+    <div class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #15468e;" role="navigation">
+        <div class="imagen_derecha ">
+            <img src="~/imagenes/Logo.png" alt="logo" />
         </div>
+        <a class="navbar-brand " href="#">
+            <img src="~/imagenes/SNICC.png" style="margin-left:50px; margin-right:50px;" width="119" height="64" alt="snicc" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" id="botones" href="#">NIVEL 1 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " id="botones" href="#">NIVEL 2</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " id="botones" href="#">NIVEL 3</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " id="botones" href="#">NIVEL 4</a>
+                </li>
+
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" id="botones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown2">
+                        <li class="dropdown-item dropdown">
+                            <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
+                                <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
+                                <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
+                                <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-item dropdown">
+                            <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
+                                <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
+                                <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
+                                <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
+                            </ul>
+                        <li class="dropdown-item dropdown">
+                            <a class="dropdown-toggle" id="dropdown2-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown2-1">
+                                <li class="dropdown-item"><a href="#">Action 2.1 A</a></li>
+                                <li class="dropdown-item"><a href="#">Action 2.1 B</a></li>
+                                <li class="dropdown-item"><a href="#">Action 2.1 C</a></li>
+                                <li class="dropdown-item dropdown">
+                                    <a class="dropdown-toggle" id="dropdown2-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.1</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown2-1-1">
+                                        <li class="dropdown-item"><a href="#">Action 2.1.1 A</a></li>
+                                        <li class="dropdown-item"><a href="#">Action 2.1.1 B</a></li>
+                                        <li class="dropdown-item"><a href="#">Action 2.1.1 C</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item dropdown">
+                                    <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
+                                        <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
+                                        <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
+                                        <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="#">
+            <img src="~/imagenes/LogoGuatemala4x.png" width="119" height="64" alt="snicc" />
+        </a>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -39,5 +97,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Content/js/navbar.js"></script>
 </body>
 </html>

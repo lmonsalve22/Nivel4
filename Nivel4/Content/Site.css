@@ -1,4 +1,36 @@
-﻿body {
+﻿
+@font-face {
+    font-family: 'CircularStd-Book';
+    src: url('tipo/CircularStd-Book.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CircularStd-Black';
+    src: url('tipo/CircularStd-Black.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CircularStd-Bold 2';
+    src: url('tipo/CircularStd-Bold 2.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CircularStd-Bold';
+    src: url('tipo/CircularStd-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'CircularStd-Book-1';
+    src: url('tipo/CircularStd-Book-1.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('tipo/FontAwesome.otf') format('opentype');
+}
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -22,3 +54,21 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* MENU DINAMICO*/
+.nav-link {
+    color: #ffffff;
+    font-family: "CircularStd-Book";
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#botones {
+    padding-right: 1.4rem;
+    padding-left: 1.4rem;
+    color: #ffffff;
+    text-align: center;
+    line-height: 15px;
+}
+
