@@ -1,0 +1,60 @@
+﻿<div class="letra d-flex align-items-center justify-content-start pl-2" style="background-color:#48a7f7;width:356px; height: 50px; font-size:22px; color: white;">
+    Resultados de la búsqueda
+</div>
+<ul id="menu" class="btn-group-vertical" role="group">
+    @*Model es la variable listamenu devuelta por el método de acción vistaparcial del menuController
+        que son los registros del nivel 1:*@
+    @foreach (var item in Model)
+    {
+        <li class="boton btn btn-block letra font-weight-bold" role="button">
+            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_1", "Busqueda", new { id = item.ID })">
+                @item.NAME
+            </a>
+            @if (item.MENU0061.Count > 0)
+            {
+                <ul>
+                    @foreach (var sub in item.MENU0061)
+                    {
+                        <li class="boton btn btn-block  letra">
+                            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_2", "Busqueda", new { id = sub.ID })">
+                                @sub.NAME
+                            </a>
+                            @if (sub.MENU0061.Count > 0)
+                            {
+                                <ul>
+                                    @foreach (var lvl in sub.MENU0061)
+                                    {
+                                        <li class="boton btn btn-block letra">
+                                            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_3", "Busqueda", new { id = lvl.ID })">
+                                                @lvl.NAME
+                                            </a>
+                                            @if (lvl.MENU0061.Count > 0)
+                                            {
+                                                <ul>
+                                                    @foreach (var cuarto in lvl.MENU0061)
+                                                    {
+                                                        <li class="boton btn btn-block letra">
+                                                            <a class="btn btn-block boton" href="@Url.Action("Buscar_por_id_level_4", "Busqueda", new { id = cuarto.ID })">
+                                                                @cuarto.NAME
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </li>
+    }
+</ul>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script>$(function () {
+        $("menu").menu();
+    });</script>
+
