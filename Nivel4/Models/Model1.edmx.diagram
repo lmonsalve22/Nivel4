@@ -13,6 +13,7 @@
         <AssociationConnector Association="Model.FK_LEVEL_3" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_LEVELS" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.MENU006" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="Model.MENU006_MENU006_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

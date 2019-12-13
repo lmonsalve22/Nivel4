@@ -14,18 +14,16 @@ namespace Nivel4.Models
     
     public partial class MENU006
     {
+        public MENU006()
+        {
+            this.MENU0061 = new HashSet<MENU006>();
+        }
+    
         public decimal ID { get; set; }
         public string NAME { get; set; }
         public Nullable<decimal> PARENTID { get; set; }
-        public MENU006()
-        {
-
-            this.MENU0061 = new HashSet<MENU006>();
-
-        }
-
+    
         public virtual ICollection<MENU006> MENU0061 { get; set; }
-
         public virtual MENU006 MENU0062 { get; set; }
     }
 }

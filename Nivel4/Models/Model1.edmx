@@ -82,6 +82,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="MENU006_MENU006_FK">
+          <End Role="MENU006" Type="Self.MENU006" Multiplicity="0..1" />
+          <End Role="MENU0061" Type="Self.MENU006" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU006">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENU0061">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="LEVEL1" EntityType="Self.LEVEL1" Schema="ADMIN" store:Type="Tables" />
           <EntitySet Name="LEVEL2" EntityType="Self.LEVEL2" Schema="ADMIN" store:Type="Tables" />
@@ -99,6 +111,10 @@
           <AssociationSet Name="FK_LEVELS" Association="Self.FK_LEVELS">
             <End Role="LEVEL3" EntitySet="LEVEL3" />
             <End Role="LEVEL4" EntitySet="LEVEL4" />
+          </AssociationSet>
+          <AssociationSet Name="MENU006_MENU006_FK" Association="Self.MENU006_MENU006_FK">
+            <End Role="MENU006" EntitySet="MENU006" />
+            <End Role="MENU0061" EntitySet="MENU006" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -198,6 +214,10 @@
             <End Role="LEVEL4" EntitySet="LEVEL4" />
           </AssociationSet>
           <EntitySet Name="MENU006" EntityType="Model.MENU006" />
+          <AssociationSet Name="MENU006_MENU006_FK" Association="Model.MENU006_MENU006_FK">
+            <End Role="MENU006" EntitySet="MENU006" />
+            <End Role="MENU0061" EntitySet="MENU006" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="MENU006">
           <Key>
@@ -206,7 +226,21 @@
           <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
           <Property Name="NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="PARENTID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="MENU0061" Relationship="Model.MENU006_MENU006_FK" FromRole="MENU006" ToRole="MENU0061" />
+          <NavigationProperty Name="MENU0062" Relationship="Model.MENU006_MENU006_FK" FromRole="MENU0061" ToRole="MENU006" />
         </EntityType>
+        <Association Name="MENU006_MENU006_FK">
+          <End Type="Model.MENU006" Role="MENU006" Multiplicity="0..1" />
+          <End Type="Model.MENU006" Role="MENU0061" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MENU006">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MENU0061">
+              <PropertyRef Name="PARENTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

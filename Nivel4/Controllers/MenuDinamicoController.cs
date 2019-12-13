@@ -13,6 +13,7 @@ namespace Nivel4.Controllers
         // GET: MenuDinamico
         public PartialViewResult VistaParcial()
         {
+            //var listaMenu = db.MENU006.ToList();
             var listaMenu = db.MENU006.Where(x => x.PARENTID == null).ToList();
             return PartialView("VistaParcial", listaMenu);
         }
