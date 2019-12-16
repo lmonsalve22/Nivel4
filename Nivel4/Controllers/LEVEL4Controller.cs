@@ -18,7 +18,7 @@ namespace Nivel4.Controllers
         // GET: LEVEL4
         public async Task<ActionResult> Index()
         {
-            var lEVEL4 = db.LEVEL4.Include(l => l.LEVEL3);
+            var lEVEL4 = db.LEVEL4.Include(l => l.LEVEL3).OrderBy(c => c.ID_LEVEL4);
             return View(await lEVEL4.ToListAsync());
         }
 
