@@ -173,6 +173,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ordenador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -407,6 +408,7 @@
     <Content Include="Views\MenuDinamico\VistaParcial.cshtml" />
     <Content Include="Views\LEVEL2\Level3PorBorrar.cshtml" />
     <Content Include="Views\LEVEL1\Level2PorBorrar.cshtml" />
+    <Content Include="Views\Shared\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

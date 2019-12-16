@@ -3,9 +3,12 @@
     ViewBag.Title = "Level2PorBorrar";
 }
 
-<h2>Level2PorBorrar</h2>
+<h2>Si borra este nivel @ViewBag.Level1.NAME_LEVEL1 se borraran los siguientes niveles 2</h2>
+<h3>¿Desea borrarlo de todas maneras?</h3>
 
-
+<p>
+    @Html.ActionLink("Borrar todo", "DeleteAll", new { id = ViewBag.Level1.ID_LEVEL1 })
+</p>
 
 <p>
     @Html.ActionLink("Create New", "Create")
