@@ -17,7 +17,7 @@ namespace Nivel4.Controllers
         // GET: LEVEL3
         public ActionResult Index()
         {
-            var lEVEL3 = db.LEVEL3.Include(l => l.LEVEL2);
+            var lEVEL3 = db.LEVEL3.Include(l => l.LEVEL2).OrderBy(c => c.ID_LEVEL3);
             return View(lEVEL3.ToList());
         }
 

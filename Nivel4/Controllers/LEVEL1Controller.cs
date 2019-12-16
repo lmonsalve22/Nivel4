@@ -17,7 +17,7 @@ namespace Nivel4.Controllers
         // GET: LEVEL1
         public ActionResult Index()
         {
-            return View(db.LEVEL1.ToList());
+            return View(db.LEVEL1.OrderBy(c => c.ID_LEVEL1).ToList());
         }
 
         // GET: LEVEL1/Details/5
@@ -48,10 +48,12 @@ namespace Nivel4.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_LEVEL1,NAME_LEVEL1")] LEVEL1 lEVEL1)
         {
+            lEVEL1.ID_LEVEL1 = db.LEVEL1.Count() + 1;
             if (ModelState.IsValid)
             {
                 db.LEVEL1.Add(lEVEL1);
                 db.SaveChanges();
+                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
                 return RedirectToAction("Index");
             }
 
@@ -83,7 +85,21 @@ namespace Nivel4.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(lEVEL1).State = EntityState.Modified;
+                var list = db.LEVEL4.Where(c => c.LEVEL3.LEVEL2.LEVEL1.ID_LEVEL1 == lEVEL1.ID_LEVEL1);
+                foreach (var item in list)
+                {
+                    LEVEL4 level4aux = db.LEVEL4.Find(item.ID_LEVEL4);
+                    LEVEL2 level2aux = db.LEVEL2.Find(item.LEVEL3.ID_LEVEL2);
+                    LEVEL1 level1aux = db.LEVEL1.Find(level2aux.ID_LEVEL1);
+                    level4aux.TAG = level2aux.LEVEL1.NAME_LEVEL1 + " " +
+                                     level2aux.NAME_LEVEL2 + " " +
+                                     level4aux.LEVEL3.NAME_LEVEL3 + " " +
+                                     level4aux.NAME_LEVEL4;
+                    db.Entry(level4aux).State = EntityState.Modified;
+
+                }
                 db.SaveChanges();
+                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
                 return RedirectToAction("Index");
             }
             return View(lEVEL1);
@@ -111,9 +127,27 @@ namespace Nivel4.Controllers
         {
             LEVEL1 lEVEL1 = db.LEVEL1.Find(id);
             db.LEVEL1.Remove(lEVEL1);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                var lEVEL2 = db.LEVEL2.Include(l => l.LEVEL1).Where(c => c.LEVEL1.ID_LEVEL1 == lEVEL1.ID_LEVEL1);
+                //return View(    lEVEL4.ToListAsync());
+                ViewBag.Level2 = lEVEL2;
+                return View("Level2PorBorrar", lEVEL2.ToList());
+            }
+            db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
             return RedirectToAction("Index");
         }
+
+        public ActionResult Level2PorBorrar()
+        {
+            return View();
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

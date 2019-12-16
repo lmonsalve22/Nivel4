@@ -17,7 +17,7 @@ namespace Nivel4.Controllers
         // GET: LEVEL2
         public ActionResult Index()
         {
-            var lEVEL2 = db.LEVEL2.Include(l => l.LEVEL1);
+            var lEVEL2 = db.LEVEL2.Include(l => l.LEVEL1).OrderBy(c => c.ID_LEVEL2);
             return View(lEVEL2.ToList());
         }
 
@@ -140,7 +140,7 @@ namespace Nivel4.Controllers
             {
                 var lEVEL3 = db.LEVEL3.Include(l => l.LEVEL2).Where(c => c.LEVEL2.ID_LEVEL2 == lEVEL2.ID_LEVEL2);
                 //return View(    lEVEL4.ToListAsync());
-                ViewBag.Level2 = lEVEL3;
+                ViewBag.Level2 = lEVEL2;
                 return View("Level3PorBorrar", lEVEL3.ToList());
             }
             db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
@@ -159,6 +159,13 @@ namespace Nivel4.Controllers
             List<LEVEL3> recorrido = lEVEL3.ToList();
             foreach (var item in recorrido)
             {
+                var lEVEL4 = db.LEVEL4.Where(c => c.LEVEL3.ID_LEVEL3 == item.ID_LEVEL3);
+                List<LEVEL4> recorridoLevel4 = lEVEL4.ToList();
+                foreach (var itemLevel4 in recorridoLevel4)
+                {
+                    db.LEVEL4.Remove(itemLevel4);
+                }
+                db.SaveChanges();
                 db.LEVEL3.Remove(item);
             }
             db.SaveChanges();
