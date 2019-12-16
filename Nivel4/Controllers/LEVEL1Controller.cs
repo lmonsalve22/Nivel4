@@ -135,16 +135,53 @@ namespace Nivel4.Controllers
             {
                 var lEVEL2 = db.LEVEL2.Include(l => l.LEVEL1).Where(c => c.LEVEL1.ID_LEVEL1 == lEVEL1.ID_LEVEL1);
                 //return View(    lEVEL4.ToListAsync());
-                ViewBag.Level2 = lEVEL2;
+                ViewBag.Level1 = lEVEL1;
                 return View("Level2PorBorrar", lEVEL2.ToList());
             }
-            db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+            //db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+            if (!Ordenador.GenerarMenuDinamico())
+            {
+                return View("ErrorPage");
+            }
             return RedirectToAction("Index");
         }
 
         public ActionResult Level2PorBorrar()
         {
             return View();
+        }
+
+        public ActionResult DeleteAll(decimal id)
+        {
+            LEVEL1 lEVEL1 = db.LEVEL1.Find(id);
+            var lEVEL2 = db.LEVEL2.Where(c => c.LEVEL1.ID_LEVEL1 == lEVEL1.ID_LEVEL1);
+            List<LEVEL2> recorrido = lEVEL2.ToList();
+            foreach (var item in recorrido)
+            {
+                var lEVEL3 = db.LEVEL3.Where(c => c.LEVEL2.ID_LEVEL2 == item.ID_LEVEL2);
+                List<LEVEL3> recorridoLevel3 = lEVEL3.ToList();
+                foreach (var itemLevel3 in recorridoLevel3)
+                {
+                    var lEVEL4 = db.LEVEL4.Where(c => c.LEVEL3.ID_LEVEL3 == itemLevel3.ID_LEVEL3);
+                    List<LEVEL4> recorridoLevel4 = lEVEL4.ToList();
+                    foreach (var itemLevel4 in recorridoLevel4)
+                    {
+                        db.LEVEL4.Remove(itemLevel4);
+                    }
+                    db.SaveChanges();
+                    db.LEVEL3.Remove(itemLevel3);
+                }
+                db.SaveChanges();
+                db.LEVEL2.Remove(item);
+            }
+            db.SaveChanges();
+            db.LEVEL1.Remove(lEVEL1);
+            db.SaveChanges();
+            if (!Ordenador.GenerarMenuDinamico())
+            {
+                return View("ErrorPage");
+            }
+            return RedirectToAction("Index");
         }
 
 
