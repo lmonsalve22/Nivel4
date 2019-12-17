@@ -62,7 +62,6 @@ C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\bin\es\System.Web.Razor.res
 C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\bin\es\System.Web.WebPages.resources.dll
 C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\obj\Debug\Nivel4.csprojAssemblyReference.cache
 C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\obj\Debug\Nivel4.csproj.CoreCompileInputs.cache
 C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\obj\Debug\Nivel4.csproj.CopyComplete
 C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\obj\Debug\Nivel4.dll
@@ -204,3 +203,4 @@ C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.csprojAssemblyRe
 C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.csproj.CopyComplete
 C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.dll
 C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.pdb
+C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\obj\Debug\Nivel4.csprojAssemblyReference.cache
