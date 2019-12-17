@@ -23,25 +23,28 @@ namespace Nivel4.Models
             }
             return salida;
         }
-        /*
-        static public void OrdenarLevel1()
+        
+        static public void OrdenarLevel()
         {
             decimal contador = db.LEVEL1.Count();
             decimal maximo = db.LEVEL1.Max(c => c.ID_LEVEL1);
             if (db.LEVEL1.Count() != db.LEVEL1.Max(c => c.ID_LEVEL1))
             {
-                var lista = db.LEVEL1;
-                db.Database.ExecuteSqlCommand("TRUNCATE TABLE level1");
+                var lista = db.LEVEL1.OrderBy(c => c.ID_LEVEL1);                
                 int i = 1;
                 foreach (var item in lista)
                 {
-                    item.ID_LEVEL1 = i;
-                    db.LEVEL1.Add(item);
-                    db.SaveChanges();
+                    if (item.ID_LEVEL1 != i)
+                    {
+                        LEVEL1 aux = new LEVEL1();
+                        aux.ID_LEVEL1 = i;
+                        db.LEVEL1.Add(aux);
+                        db.SaveChanges();
+                    }
                     i++;
                 }
             }
         }
-        */
+        
     }
 }
