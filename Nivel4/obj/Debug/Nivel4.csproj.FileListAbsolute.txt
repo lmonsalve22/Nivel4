@@ -203,4 +203,3 @@ C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.csprojAssemblyRe
 C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.csproj.CopyComplete
 C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.dll
 C:\Users\EFRAIN\Documents\GitHub\Nivel4\Nivel4\obj\Debug\Nivel4.pdb
-C:\Users\limc_\Documents\GitHub\Nivel4\Nivel4\Nivel4\obj\Debug\Nivel4.csprojAssemblyReference.cache
