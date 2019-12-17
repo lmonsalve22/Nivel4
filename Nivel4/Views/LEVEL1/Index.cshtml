@@ -7,12 +7,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NAME_LEVEL1)
+           NOMBRE_NIVEL1
         </th>
         <th></th>
     </tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.NAME_LEVEL1)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_LEVEL1 }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_LEVEL1 }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_LEVEL1 })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_LEVEL1 }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_LEVEL1 }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_LEVEL1 })
         </td>
     </tr>
 }

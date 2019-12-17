@@ -7,21 +7,21 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NAME_LEVEL4)
+            NOMBRE_NIVEL4
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VINCULOPOWERBI)
+            VINCULO_POWERBI
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TAG)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LEVEL3.NAME_LEVEL3)
+           NOMBRE_NIVEL3
         </th>
         <th></th>
     </tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.LEVEL3.NAME_LEVEL3)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_LEVEL4 }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_LEVEL4 }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_LEVEL4 })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_LEVEL4 }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_LEVEL4 }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_LEVEL4 })
         </td>
     </tr>
 }

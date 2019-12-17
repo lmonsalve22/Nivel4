@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
-    <h4>LEVEL4</h4>
+    <h4>NIVEL4</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NAME_LEVEL4)
+            NOMBRE_NIVEL4
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.VINCULOPOWERBI)
+           VINCULO_POWERBI
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LEVEL3.NAME_LEVEL3)
+            NOMBRE_NIVEL3
         </dt>
 
         <dd>
@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_LEVEL4 }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_LEVEL4 }) |
+    @Html.ActionLink("<<Atras", "Index")
 </p>
