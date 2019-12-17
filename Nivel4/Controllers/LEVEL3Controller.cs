@@ -55,7 +55,10 @@ namespace Nivel4.Controllers
             {
                 db.LEVEL3.Add(lEVEL3);
                 db.SaveChanges();
-                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+                if (!Ordenador.GenerarMenuDinamico())
+                {
+                    return View("ErrorPage");
+                }
                 return RedirectToAction("Index");
             }
 
@@ -104,7 +107,10 @@ namespace Nivel4.Controllers
                     
                 }
                 db.SaveChanges();
-                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+                if (!Ordenador.GenerarMenuDinamico())
+                {
+                    return View("ErrorPage");
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.ID_LEVEL2 = new SelectList(db.LEVEL2, "ID_LEVEL2", "NAME_LEVEL2", lEVEL3.ID_LEVEL2);
@@ -144,8 +150,11 @@ namespace Nivel4.Controllers
                 ViewBag.Level3 = lEVEL3;
                 return View("Level4PorBorrar", lEVEL4.ToList()); 
             }
-            
-            db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+
+            if (!Ordenador.GenerarMenuDinamico())
+            {
+                return View("ErrorPage");
+            }
             return RedirectToAction("Index");
         }
         public ActionResult Level4PorBorrar()
@@ -165,7 +174,10 @@ namespace Nivel4.Controllers
             db.SaveChanges();
             db.LEVEL3.Remove(lEVEL3);
             db.SaveChanges();
-            db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+            if (!Ordenador.GenerarMenuDinamico())
+            {
+                return View("ErrorPage");
+            }
             return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)

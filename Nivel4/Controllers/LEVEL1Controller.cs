@@ -53,7 +53,10 @@ namespace Nivel4.Controllers
             {
                 db.LEVEL1.Add(lEVEL1);
                 db.SaveChanges();
-                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+                if (!Ordenador.GenerarMenuDinamico())
+                {
+                    return View("ErrorPage");
+                }
                 return RedirectToAction("Index");
             }
 
@@ -99,7 +102,10 @@ namespace Nivel4.Controllers
 
                 }
                 db.SaveChanges();
-                db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+                if (!Ordenador.GenerarMenuDinamico())
+                {
+                    return View("ErrorPage");
+                }
                 return RedirectToAction("Index");
             }
             return View(lEVEL1);
@@ -139,6 +145,7 @@ namespace Nivel4.Controllers
                 return View("Level2PorBorrar", lEVEL2.ToList());
             }
             //db.Database.ExecuteSqlCommand("BEGIN LLENAR_MENU; END; ");
+            Ordenador.OrdenarLevel();
             if (!Ordenador.GenerarMenuDinamico())
             {
                 return View("ErrorPage");
@@ -177,6 +184,7 @@ namespace Nivel4.Controllers
             db.SaveChanges();
             db.LEVEL1.Remove(lEVEL1);
             db.SaveChanges();
+            Ordenador.OrdenarLevel();
             if (!Ordenador.GenerarMenuDinamico())
             {
                 return View("ErrorPage");
