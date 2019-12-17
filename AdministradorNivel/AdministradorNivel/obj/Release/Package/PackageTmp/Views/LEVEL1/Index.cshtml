@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AdministradorNivel.Models.LEVEL1>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            NOMBRE_NIVEL1
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NAME_LEVEL1)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID_LEVEL1 }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.ID_LEVEL1 }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_LEVEL1 })
+            </td>
+        </tr>
+    }
+
+</table>

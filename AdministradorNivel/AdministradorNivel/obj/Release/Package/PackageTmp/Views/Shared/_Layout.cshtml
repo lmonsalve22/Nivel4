@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        @ViewBag.Title - Sistema Nacional de Información del Cambio Climático
+    </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/menus.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link href="~/Content/Estilo/Estilos004.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/slick-theme.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/slick/slick.min.js"></script>
+    <script>
+        $(function () {
+            $("#menu").menu({
+                icons: { submenu: "ui-icon-triangle-1-e" }
+            });
+        });
+    </script>
+    <style>
+
+        /*Estilos ui menu*/
+        .ui-menu {
+            width: 356px;
+            height: auto;
+            background-color: white;
+            margin-top: 0;
+        }
+
+            .ui-menu.ui-widget-content {
+                border: 2px solid #054e31;
+            }
+            /*Tamaño submenu*/
+            .ui-menu .ui-menu-item .ui-menu {
+                width: 200px;
+                height: auto;
+            }
+
+        .letra {
+            /*font-family: 'Agency FB';*/
+            font-weight: 400;
+        }
+        /*Estilo clase boton de ui menu*/
+        .boton {
+            border: 0;
+            text-align: left;
+            font-size: 15px;
+        }
+            /*.boton:hover {
+                background-color: #0e84c5;
+                color:white;
+            }*/
+            .boton a:hover {
+                border: 0;
+                background-color: #0e84c5 !important;
+            }
+        /*modifica el borde, color y font weight de el boton predeterminado cuando esta desplegado el submenu*/
+        .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+            border: 0;
+            background-color: #0e84c5 !important;
+            font-weight: 700;
+        }
+        /*Posiciona al icono a la izquierda*/
+        .ui-menu .ui-menu-icon {
+            position: static;
+        }
+
+        .ui-menu:hover .ui-menu-icon {
+            position: static;
+        }
+        #botones {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    @*MENU DINAMICO*@
+    <div class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #15468e;" role="navigation">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" id="botones" href="~/level1">NIVEL 1 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " id="botones" href="~/level2">NIVEL 2</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " id="botones" href="~/level3">NIVEL 3</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " id="botones" href="~/level4">NIVEL 4</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " id="botones" href="~/Home/Index">Menu Dinamico</a>
+                </li>
+                <!--
+    <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" id="botones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown2">
+            <li class="dropdown-item dropdown">
+                <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
+                    <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
+                    <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
+                    <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
+                </ul>
+            </li>
+            <li class="dropdown-item dropdown">
+                <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
+                    <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
+                    <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
+                    <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
+                </ul>
+            <li class="dropdown-item dropdown">
+                <a class="dropdown-toggle" id="dropdown2-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown2-1">
+                    <li class="dropdown-item"><a href="#">Action 2.1 A</a></li>
+                    <li class="dropdown-item"><a href="#">Action 2.1 B</a></li>
+                    <li class="dropdown-item"><a href="#">Action 2.1 C</a></li>
+                    <li class="dropdown-item dropdown">
+                        <a class="dropdown-toggle" id="dropdown2-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.1</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown2-1-1">
+                            <li class="dropdown-item"><a href="#">Action 2.1.1 A</a></li>
+                            <li class="dropdown-item"><a href="#">Action 2.1.1 B</a></li>
+                            <li class="dropdown-item"><a href="#">Action 2.1.1 C</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-item dropdown">
+                        <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
+                            <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
+                            <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
+                            <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+        -->
+            </ul>
+        </div>        
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    
+    
+</body>
+</html>
