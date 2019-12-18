@@ -80,18 +80,40 @@
         .ui-menu:hover .ui-menu-icon {
             position: static;
         }
+
         #botones {
             color: white;
         }
     </style>
+
+    @*MENU DINAMICO*@
+    
+    <script languague="javascript">
+        function mostrar() {
+            div = document.getElementById('flotante');
+            div.style.display = '';
+        }
+
+        function cerrar() {
+            div = document.getElementById('flotante');
+            div.style.display = 'none';
+        }
+    </script>
+
 </head>
 <body>
+
+    @{ Html.RenderAction("VistaParcial", "MenuDinamico");}
+
     @*MENU DINAMICO*@
     <div class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #15468e;" role="navigation">
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" id="botones" href="~/level1">NIVEL 1 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" id="botones" href="~/Home/Index">Inicio<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" id="botones" href="~/level1">NIVEL 1</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link " id="botones" href="~/level2">NIVEL 2</a>
@@ -103,7 +125,7 @@
                     <a class="nav-link " id="botones" href="~/level4">NIVEL 4</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link " id="botones" href="~/Home/Index">Menu Dinamico</a>
+                    <a class="nav-link " id="botones" href="javascript:mostrar();">Menu Dinamico</a>
                 </li>
                 <!--
     <li class="nav-item dropdown active">
@@ -152,7 +174,7 @@
     </li>
         -->
             </ul>
-        </div>        
+        </div>
     </div>
 
     <div class="container body-content">
@@ -163,7 +185,7 @@
         </footer>
     </div>
 
-    
-    
+
+
 </body>
 </html>
