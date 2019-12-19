@@ -4,12 +4,13 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Borrar</h2>
+<h4>NIVEL2</h4>
+<h2>ELIMINAR</h2>
+<div class="row" style="height:50px;"></div>
 
 <h3>¿Desea Eliminar este archivo?</h3>
+<div class="row" style="height:50px;"></div>
 <div>
-    <h4>NIVEL2</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             NOMBRE_NIVEL2
@@ -29,13 +30,16 @@
 
     </dl>
 
+    <div class="row" style="height:50px;"></div>
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
+
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
-            @Html.ActionLink("<<Atras", "Index")
+            <input type="submit" value="Eliminar" class="btn btn-outline-danger" /> |
+            @Html.ActionLink("<<Atras", "Index", null, new { @class = "btn btn-outline-primary" })
         </div>
     }
 </div>

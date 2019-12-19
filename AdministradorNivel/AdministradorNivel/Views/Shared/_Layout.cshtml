@@ -102,81 +102,42 @@
 
 </head>
 <body>
+    @*MENU DINAMICO*@
+    <header style="margin-bottom">
+        <input type="checkbox" id="btn-menu" />
+        <label for="btn-menu"> <img src="~/Content/themes/base/images/menu1.ico" /> </label>
+        <nav class="menu">
+            <ul>
+                <li class="active">
+                    <a id="botones" href="~/Home/Index">INICIO</a>
+                </li>
+                <li>
+                    <a id="botones" href="~/level1">NIVEL 1</a>
+                </li>
+                <li>
+                    <a id="botones" href="~/level2">NIVEL 2</a>
+                </li>
+                <li>
+                    <a id="botones" href="~/level3">NIVEL 3</a>
+                </li>
+                <li>
+                    <a id="botones" href="~/level4">NIVEL 4</a>
+                </li>
+                <li>
+                    <a id="botones" href="javascript:mostrar();">MENU DINAMICO</a>
+                </li>
+            </ul>
+        </nav>
 
+    </header>
+    <div class="row" style="height:55px;">
+
+    </div>
     @{ Html.RenderAction("VistaParcial", "MenuDinamico");}
 
-    @*MENU DINAMICO*@
-    <div class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #15468e;" role="navigation">
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" id="botones" href="~/Home/Index">Inicio<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" id="botones" href="~/level1">NIVEL 1</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link " id="botones" href="~/level2">NIVEL 2</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link " id="botones" href="~/level3">NIVEL 3</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link " id="botones" href="~/level4">NIVEL 4</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link " id="botones" href="javascript:mostrar();">Menu Dinamico</a>
-                </li>
-                <!--
-    <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" id="botones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
-        <ul class="dropdown-menu" aria-labelledby="dropdown2">
-            <li class="dropdown-item dropdown">
-                <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
-                    <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
-                    <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
-                    <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
-                </ul>
-            </li>
-            <li class="dropdown-item dropdown">
-                <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
-                    <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
-                    <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
-                    <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
-                </ul>
-            <li class="dropdown-item dropdown">
-                <a class="dropdown-toggle" id="dropdown2-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1</a>
-                <ul class="dropdown-menu" aria-labelledby="dropdown2-1">
-                    <li class="dropdown-item"><a href="#">Action 2.1 A</a></li>
-                    <li class="dropdown-item"><a href="#">Action 2.1 B</a></li>
-                    <li class="dropdown-item"><a href="#">Action 2.1 C</a></li>
-                    <li class="dropdown-item dropdown">
-                        <a class="dropdown-toggle" id="dropdown2-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.1</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown2-1-1">
-                            <li class="dropdown-item"><a href="#">Action 2.1.1 A</a></li>
-                            <li class="dropdown-item"><a href="#">Action 2.1.1 B</a></li>
-                            <li class="dropdown-item"><a href="#">Action 2.1.1 C</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-item dropdown">
-                        <a class="dropdown-toggle" id="dropdown2-1-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2.1.2</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown2-1-2">
-                            <li class="dropdown-item"><a href="#">Action 2.1.2 A</a></li>
-                            <li class="dropdown-item"><a href="#">Action 2.1.2 B</a></li>
-                            <li class="dropdown-item"><a href="#">Action 2.1.2 C</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-        -->
-            </ul>
-        </div>
-    </div>
+    <div class="row" style="height:80px;">
 
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -185,6 +146,15 @@
         </footer>
     </div>
 
+
+
+
+    <script>
+        $(document).on('click', 'ul li', function () {
+            $(this).addClass('active').siblings().removeClass("active")
+        })
+
+    </script>
 
 
 </body>

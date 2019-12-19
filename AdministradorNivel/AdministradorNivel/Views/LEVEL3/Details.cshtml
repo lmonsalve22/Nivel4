@@ -3,12 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Detalles</h2>
+<h4>NIVEL3</h4>
+<h2>DETALLES</h2>
+<div class="row" style="height:50px;"></div>
 
 <div>
-    <h4>NIVEL3</h4>
-    <hr />
+    
     <dl class="dl-horizontal">
         <dt>
             NOMBRE_NIVEL3
@@ -28,7 +28,8 @@
 
     </dl>
 </div>
+<div class="row" style="height:50px;"></div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_LEVEL3 }) |
-    @Html.ActionLink("<<Atras", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_LEVEL3 } , new { @class = "btn btn-outline-success" }) |
+    @Html.ActionLink("<<Atras", "Index", null, new { @class = "btn btn-outline-primary" })
 </p>
