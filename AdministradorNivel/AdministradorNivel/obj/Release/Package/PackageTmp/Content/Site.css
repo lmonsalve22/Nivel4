@@ -1,6 +1,5 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +20,82 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+/*menu horizontal*/
+header {
+    width: 100%;
+    background: #15468e;
+    position: fixed;
+    z-index: 100;
+}
+
+#btn-menu{
+    display:none;
+}
+
+header label{
+    display:none;
+    
+    
+}
+
+header label:hover{
+    cursor:pointer;
+    background:#15468e;
+}
+
+.menu ul{
+    margin:0px;
+    list-style:none;
+    padding:0;
+    display:flex;
+}
+
+.menu li:hover{
+    background: rgba( 0,0, 0, 0.3);
+
+}
+
+.menu li a{
+    display:block;
+    padding: 15px 20px;
+    color:white;
+    text-decoration:none;
+}
+ul li.active a {
+    background: rgba( 0,0, 0, 0.3);
+}
+
+
+
+@media(max-width:768px){
+
+    header label{
+        display:block;
+    }
+
+    .menu {
+        position: absolute;
+        background: #15468e;
+        width: 50%;
+        margin-left: -51%;
+        transition: 0.5s;
+    }
+    .menu ul{
+        flex-direction:column;
+        margin-top:-5px;
+
+    }
+    .menu actual{
+        background:#fff;
+    }
+   
+
+    #btn-menu:checked ~ .menu{
+        margin:-2px;
+
+    }
+
 }

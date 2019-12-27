@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="Entities-Web.config Connection String" description="Entities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=&quot;DATA SOURCE=database-1.cdpqfpl2cyqq.us-east-2.rds.amazonaws.com:1521/orcl;PASSWORD=123456789;PERSIST SECURITY INFO=True;USER ID=ADMIN&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\limc_\\source\\repos\\AdministradorNivel\\AdministradorNivel\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Entities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\limc_\\Documents\\GitHub\\Nivel4\\Nivel4\\AdministradorNivel\\AdministradorNivel\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Entities']/@connectionString" />
   </parameter>
   <parameter name="OracleDbContext-Web.config Connection String" description="OracleDbContext Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="User Id=oracle_user;Password=oracle_user_password;Data Source=oracle" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\limc_\\source\\repos\\AdministradorNivel\\AdministradorNivel\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OracleDbContext']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\limc_\\Documents\\GitHub\\Nivel4\\Nivel4\\AdministradorNivel\\AdministradorNivel\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OracleDbContext']/@connectionString" />
   </parameter>
 </parameters>
