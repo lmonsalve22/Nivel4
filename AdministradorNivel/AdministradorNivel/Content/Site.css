@@ -99,3 +99,48 @@ ul li.active a {
     }
 
 }
+
+.lineasTitulo {
+    display: inline-block;
+    position: relative;
+}
+
+    .lineasTitulo::after, .lineasTitulo::before {
+        content: '';
+        position: absolute;
+        width: 250px;
+        height: 3px;
+        background-color: currentColor;
+        top: 0.6em
+    }
+
+    .lineasTitulo::after {
+        right: 120%;
+    }
+
+    .lineasTitulo::before {
+        left: 120%;
+    }
+
+
+.lineasTitulo2 {
+    display: inline-block;
+    position: relative;
+}
+
+    .lineasTitulo2::after, .lineasTitulo2::before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 2px;
+        background-color: currentColor;
+        top: 0.6em
+    }
+
+    .lineasTitulo2::after {
+        right: 120%;
+    }
+
+    .lineasTitulo2::before {
+        left: 120%;
+    }

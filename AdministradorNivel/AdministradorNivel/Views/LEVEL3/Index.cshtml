@@ -3,14 +3,17 @@
 @{
     ViewBag.Title = "Index";
 }
-<h4>NIVEL3</h4>
-<h2>Index</h2>
+<div class="w-100 text-center">
+    <h4 class="lineasTitulo text-center" style="color: #15468e; font-family:Arial, Helvetica, sans-serif">NIVEL3</h4>
+</div>
+
+
 <div class="row" style="height:50px;"></div>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create", "LEVEL3", new { @class = "btn btn-outline-success" })
+    @Html.ActionLink("✚ Crear Nuevo", "Create", "LEVEL3", new { @class = "btn btn-outline-success"})
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             NOMBRE_NIVEL3
@@ -23,10 +26,10 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td style="text-transform:lowercase;">
             @Html.DisplayFor(modelItem => item.NAME_LEVEL3)
         </td>
-        <td>
+        <td style="text-transform:lowercase;">
             @Html.DisplayFor(modelItem => item.LEVEL2.NAME_LEVEL2)
         </td>
         <td>
