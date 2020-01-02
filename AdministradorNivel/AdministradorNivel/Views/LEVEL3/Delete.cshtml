@@ -4,41 +4,48 @@
     ViewBag.Title = "Delete";
 }
 
-<h4>NIVEL3</h4>
-<h2>ELIMINAR</h2>
+<div class="w-100 text-center">
+    <div class="text-center">
+        <h6 style="color: #15468e; font-family:Arial, Helvetica, sans-serif">NIVEL3</h6>
+    </div>
+    <h4 class="lineasTitulo text-center" style="font-family:Arial, Helvetica, sans-serif">ELIMINAR</h4>
+</div>
+
 <div class="row" style="height:50px;"></div>
-
-<h3>¿Desea Eliminar este archivo?</h3>
-<div class="row" style="height:50px;"></div>
-<div>
-
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            NOMBRE_NIVEL3
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NAME_LEVEL3)
-        </dd>
-
-        <dt>
-            NOMBRE_NIVEL2
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LEVEL2.NAME_LEVEL2)
-        </dd>
-
-    </dl>
+<div class="text-center">
+    <h4>¿Desea Eliminar este archivo?</h4>
     <div class="row" style="height:50px;"></div>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <div>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-outline-danger" /> |
-            @Html.ActionLink("<<Atras", "Index", null, new { @class = "btn btn-outline-primary" })
-        </div>
-    }
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                NOMBRE_NIVEL3
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NAME_LEVEL3)
+            </dd>
+
+            <dt>
+                NOMBRE_NIVEL2
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LEVEL2.NAME_LEVEL2)
+            </dd>
+
+        </dl>
+        <div class="row" style="height:50px;"></div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-outline-danger" /> |
+                @Html.ActionLink("<<Atras", "Index", null, new { @class = "btn btn-outline-primary" })
+            </div>
+        }
+    </div>
+
 </div>
