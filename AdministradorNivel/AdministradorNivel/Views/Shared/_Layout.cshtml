@@ -37,6 +37,7 @@
             height: auto;
             background-color: white;
             margin-top: 0;
+            
         }
 
             .ui-menu.ui-widget-content {
@@ -46,6 +47,12 @@
             .ui-menu .ui-menu-item .ui-menu {
                 width: 200px;
                 height: auto;
+            }
+
+            .ui-menu .ui-menu-item:hover {
+                background-color: #15468e;
+                color:white;
+                
             }
 
         .letra {
@@ -91,13 +98,29 @@
     <script languague="javascript">
         function mostrar() {
             div = document.getElementById('flotante');
-            div.style.display = '';
+
+            if (div.style.marginTop == "-50%") {
+                //div.style.display = '';
+                div.style.marginTop = "0";
+                div.style.transition = "0.6s";
+            } else {
+                div.style.marginTop = "-50%";
+                div.style.transition = "0.6s";
+            }
         }
 
         function cerrar() {
             div = document.getElementById('flotante');
-            div.style.display = 'none';
+            //div.style.display = 'none';
+            div.style.marginTop = "-50%";
+            div.style.transition = "0.6s";
         }
+
+        $(document).ready(function () {
+            document.getElementById('flotante').style.display = 'block';
+            document.getElementById('flotante').style.marginTop = "-50%";
+        });
+
     </script>
 
 </head>
@@ -124,7 +147,7 @@
                     <a id="botones" href="~/level4">NIVEL 4</a>
                 </li>
                 <li>
-                    <a id="botones" href="javascript:mostrar();">MENU DINAMICO</a>
+                    <a id="botones" href="javascript:mostrar();">MENÚ DINÁMICO</a>
                 </li>
                 <li>
                     <a id="botones" href="http://40.114.14.4/Publish/ReadExcel">Ingresar Excel</a>

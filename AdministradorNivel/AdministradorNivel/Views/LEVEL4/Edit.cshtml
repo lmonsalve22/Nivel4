@@ -4,45 +4,49 @@
     ViewBag.Title = "Edit";
 }
 
-<h4>NIVEL4</h4>
-<h2>EDITAR</h2>
+<div class="w-100 text-center">
+    <div class="text-center">
+        <h6 style="color: #15468e; font-family:Arial, Helvetica, sans-serif">NIVEL4</h6>
+    </div>
+    <h4 class="lineasTitulo text-center" style="font-family:Arial, Helvetica, sans-serif">EDITAR</h4>
+</div>
 
 <div class="row" style="height:50px;"></div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
+<div class="form-horizontal" style="display:flex; flex-direction:column; align-items:center;">
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.ID_LEVEL4)
 
     <div class="form-group">
-        <div class="control-label col-md-2">
+        <div class="control-label">
             <h6>NOMBRE_NIVEL3</h6>
         </div>
-        <div class="col-md-10">
+        <div class="">
             @Html.DropDownList("ID_LEVEL3", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.ID_LEVEL3, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <div class="control-label col-md-2">
+        <div class="control-label">
             <h6>NOMBRE_NIVEL4</h6>
         </div>
-        <div class="col-md-10">
+        <div class="">
             @Html.EditorFor(model => model.NAME_LEVEL4, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.NAME_LEVEL4, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <div class="control-label col-md-2">
+        <div class="control-label">
             <h6>VINCULO_POWERBI</h6>
         </div>
 
-        <div class="col-md-10">
+        <div class="">
             @Html.EditorFor(model => model.VINCULOPOWERBI, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.VINCULOPOWERBI, "", new { @class = "text-danger" })
         </div>
@@ -57,7 +61,7 @@
     </div>
     <div class="row" style="height:50px;"></div>
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="">
             <input type="submit" value="Guardar" class="btn btn-outline-success" /> |
             @Html.ActionLink("<<Atras", "Index", null, new { @class = "btn btn-outline-primary" })
         </div>
