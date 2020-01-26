@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AdministradorNivel.Models.LEVEL4>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h4>NIVEL4</h4>
+<h2>INDEX</h2>
+<div class="row" style="height:50px;"></div>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", "LEVEL4", new { @class = "btn btn-outline-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            NOMBRE_NIVEL4
+        </th>
+        <th>
+            VINCULO_POWERBI
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAG)
+        </th>
+        <th>
+           NOMBRE_NIVEL3
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_LEVEL4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VINCULOPOWERBI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LEVEL3.NAME_LEVEL3)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_LEVEL4 }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_LEVEL4 }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_LEVEL4 })
+        </td>
+    </tr>
+}
+
+</table>
